@@ -30,6 +30,22 @@ exports.findPost = async (req, res) => {
     });
 };
 
+// post find by id controller
+exports.findPostById = async (req, res)=>{
+    let postId = req.params.id;
+    Posts.findById(postId,(err,post)=>{
+        if(err){
+            return res.status(400).json({
+                error:err
+            });
+        }
+        return res.status(200).json({
+            success: true,
+            specificPost: post
+        })
+    })
+}
+
 // post update controller
 exports.updatePost = async (req, res) => {
     Posts.findByIdAndUpdate(
