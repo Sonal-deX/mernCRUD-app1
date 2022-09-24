@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewModal from './ViewModal';
+import { Link } from 'react-router-dom';
+import EditModal from './EditPost';
 
 function PostList(props) {
 
@@ -28,9 +30,7 @@ function PostList(props) {
                         <td className='text-center'>{data.description}</td>
                         <td className='text-center'>{data.postCategory}</td>
                         <td className='text-center'>
-                            <a className='btn btn-warning' href='#'>
-                                <i className='fa fa-edit'></i>&nbsp;Edit
-                            </a>
+                            <EditModal dataset={data}/>
                             &nbsp;
                             <a className='btn btn-danger' href='#'>
                                 <i className='fa fa-trash-alt'></i>&nbsp;Delete
@@ -47,7 +47,7 @@ function PostList(props) {
     return (
         <React.Fragment>
 
-            <h1 className='text-center p-3'>Post List</h1>
+            <h1 className='text-center my-3'>Post List</h1>
 
             <table className="table table-hover">
                 <thead>
@@ -61,6 +61,8 @@ function PostList(props) {
                 </thead>
                 {arr}
             </table>
+
+            <Link className='btn btn-success' to={"/add"}>Create Post</Link>
 
         </React.Fragment>
     )

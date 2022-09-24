@@ -25,9 +25,6 @@ mongoose.connect(DB_URL)
     console.log('DB connection error',err)
 })
 
-app.get('/', (req, res) => {
-    res.send("ihsoeiho")
-})
 
 app.listen(PORT,()=>{
     console.log(`Listening on port ${PORT}`);
