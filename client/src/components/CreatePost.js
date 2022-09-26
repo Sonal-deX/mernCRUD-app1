@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
 function CreatePost() {
+
+    const navigate = useNavigate();
 
     const [topic, setTopic] = useState()
     const [description, setDescription] = useState()
@@ -20,13 +23,10 @@ function CreatePost() {
             description: description,
             postCategory: postCategory
         }
-        console.log(data);
         axios.post('http://localhost:8080/post', data)
             .then((response) => {
                 if (response.data.success) {
-                    setTopic('')
-                    setDescription('')
-                    setPostCategory('')
+                    navigate('/home')
                 }
             })
             .catch((error) => {
